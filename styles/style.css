@@ -1,0 +1,140 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+    color: #233044;
+    background-color: #f5f6f8;
+}
+
+.container {
+    width: 92%;
+    max-width: 1060px;
+    margin: 0 auto;
+}
+
+.site-header {
+    padding: 20px 0;
+    background-color: #213b59;
+    color: white;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.site-header a {
+    color: white;
+    text-decoration: none;
+}
+
+.site-header a:hover {
+    text-decoration: underline;
+}
+
+.site-name {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+nav {
+    display: flex;
+    gap: 24px;
+}
+
+.intro {
+    padding: 32px 0 16px;
+}
+
+h1 {
+    margin: 0 0 8px;
+    font-size: 32px;
+}
+
+h2 {
+    margin: 0 0 12px;
+    font-size: 24px;
+}
+
+.intro p,
+.catalog-note {
+    margin: 0 0 20px;
+    color: #535f70;
+}
+
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.product-card {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    border: 1px solid #d8dee6;
+    border-radius: 6px;
+    background-color: white;
+}
+
+.product-card img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    background-color: white;
+    border-radius: 4px;
+}
+
+.product-card h3 {
+    margin: 16px 0 8px;
+    font-size: 19px;
+}
+
+.product-description {
+    margin: 0 0 16px;
+    color: #535f70;
+}
+
+.product-price {
+    margin: auto 0 16px;
+    font-size: 21px;
+    font-weight: bold;
+}
+
+.product-card button {
+    padding: 11px;
+    border: 1px solid #c5ced9;
+    border-radius: 4px;
+    font: inherit;
+}
+
+.product-card button:disabled {
+    color: #596577;
+    background-color: #e8edf2;
+    cursor: not-allowed;
+}
+
+.about {
+    margin: 36px 0;
+    padding-top: 24px;
+    border-top: 1px solid #d8dee6;
+}
+
+.about p {
+    margin: 0;
+}
+
+.site-footer {
+    padding: 20px 0;
+    color: #535f70;
+    background-color: #e8edf2;
+    font-size: 14px;
+}

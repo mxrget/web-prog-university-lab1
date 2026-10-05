@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Учебный магазин вратарской экипировки: щитки, шлем, ловушка и клюшка.">
+    <title>Вратарская лавка Калинина</title>
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles/style.css">
+    <script src="scripts/data.js" defer></script>
+    <script src="scripts/catalog.js" defer></script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-content">
+            <a class="site-name" href="index.html">Вратарская лавка Калинина</a>
+            <nav aria-label="Основная навигация">
+                <a href="#catalog">Каталог</a>
+                <a href="#about">О проекте</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="intro">
+            <h1>Экипировка для вратаря</h1>
+            <p>Всё, что вам нужно, чтобы сыграть всухую.</p>
+        </section>
+
+        <section id="catalog" aria-labelledby="catalog-title">
+            <h2 id="catalog-title">Каталог товаров</h2>
+            <p class="catalog-note">Пока доступен только просмотр каталога. Добавление в корзину появится позже.</p>
+            <noscript><p>Для отображения товаров включите JavaScript в браузере.</p></noscript>
+            <div class="product-list" id="product-list"></div>
+        </section>
+
+        <section class="about" id="about" aria-labelledby="about-title">
+            <h2 id="about-title">О проекте</h2>
+            <p>Магазин экипировки для хоккейных вратарей (на самом деле, учебный проект, заказ сделать нельзя, сорри)</p>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">Вратарская лавка Калинина, 2026</div>
+    </footer>
+</body>
+</html>
