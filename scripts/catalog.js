@@ -24,8 +24,9 @@ function createProductCard(product) {
     const button = document.createElement("button");
     button.type = "button";
     button.textContent = "Добавить в корзину";
-    // корзина появится чуть позже
-    button.disabled = true;
+    button.addEventListener("click", function () {
+        addToCart(product.id);
+    });
 
     card.append(image, name, description, price, button);
     return card;

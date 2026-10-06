@@ -8,6 +8,7 @@
     <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles/style.css">
     <script src="scripts/data.js" defer></script>
+    <script src="scripts/cart.js" defer></script>
     <script src="scripts/catalog.js" defer></script>
 </head>
 <body>
@@ -16,6 +17,7 @@
             <a class="site-name" href="index.html">Вратарская лавка Калинина</a>
             <nav aria-label="Основная навигация">
                 <a href="#catalog">Каталог</a>
+                <a href="#cart">Корзина (<span id="cart-count">0</span>)</a>
                 <a href="#about">О проекте</a>
             </nav>
         </div>
@@ -29,9 +31,16 @@
 
         <section id="catalog" aria-labelledby="catalog-title">
             <h2 id="catalog-title">Каталог товаров</h2>
-            <p class="catalog-note">Пока доступен только просмотр каталога. Добавление в корзину появится позже.</p>
             <noscript><p>Для отображения товаров включите JavaScript в браузере.</p></noscript>
             <div class="product-list" id="product-list"></div>
+        </section>
+
+        <section class="cart" id="cart" aria-labelledby="cart-title">
+            <h2 id="cart-title" tabindex="-1">Корзина</h2>
+            <p id="cart-message" class="cart-message" role="status"></p>
+            <p id="cart-empty">Корзина пока пуста. Добавьте товары из каталога.</p>
+            <ul class="cart-list" id="cart-list"></ul>
+            <p class="cart-total">Итого: <span id="cart-total">0 ₽</span></p>
         </section>
 
         <section class="about" id="about" aria-labelledby="about-title">
