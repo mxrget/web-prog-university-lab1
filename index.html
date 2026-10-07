@@ -10,6 +10,7 @@
     <script src="scripts/data.js" defer></script>
     <script src="scripts/cart.js" defer></script>
     <script src="scripts/catalog.js" defer></script>
+    <script src="scripts/order.js" defer></script>
 </head>
 <body>
     <header class="site-header">
@@ -38,14 +39,42 @@
         <section class="cart" id="cart" aria-labelledby="cart-title">
             <h2 id="cart-title" tabindex="-1">Корзина</h2>
             <p id="cart-message" class="cart-message" role="status"></p>
+            <p id="storage-message" class="storage-message" role="status"></p>
             <p id="cart-empty">Корзина пока пуста. Добавьте товары из каталога.</p>
             <ul class="cart-list" id="cart-list"></ul>
             <p class="cart-total">Итого: <span id="cart-total">0 ₽</span></p>
+            <button class="primary-button" id="checkout-button" type="button" aria-expanded="false" aria-controls="checkout" disabled>Оформить заказ</button>
         </section>
+
+        <section class="checkout" id="checkout" aria-labelledby="checkout-title" hidden>
+            <h2 id="checkout-title">Оформление заказа</h2>
+            <form id="order-form">
+                <div class="form-fields">
+                    <label for="first-name">Имя
+                        <input id="first-name" name="firstName" autocomplete="given-name" maxlength="60" required>
+                    </label>
+                    <label for="last-name">Фамилия
+                        <input id="last-name" name="lastName" autocomplete="family-name" maxlength="60" required>
+                    </label>
+                    <label class="address-field" for="address">Адрес доставки
+                        <input id="address" name="address" autocomplete="street-address" maxlength="200" required>
+                    </label>
+                    <label for="phone">Контактный номер телефона
+                        <input id="phone" name="phone" type="tel" autocomplete="tel" maxlength="25" placeholder="+7 (999) 123-45-67" aria-describedby="phone-help" required>
+                        <span id="phone-help" class="field-help">От 10 до 15 цифр. Можно использовать +, пробелы, скобки и дефисы.</span>
+                    </label>
+                </div>
+                <div class="form-actions">
+                    <button class="primary-button" type="submit">Создать заказ</button>
+                    <button id="cancel-order" type="button">Отмена</button>
+                </div>
+            </form>
+        </section>
+        <p id="order-message" class="order-message" role="status" tabindex="-1"></p>
 
         <section class="about" id="about" aria-labelledby="about-title">
             <h2 id="about-title">О проекте</h2>
-            <p>Магазин экипировки для хоккейных вратарей (на самом деле, учебный проект, заказ сделать нельзя, сорри)</p>
+            <p>Магазин экипировки для хоккейных вратарей (на самом деле, учебный проект, настоящий заказ сделать нельзя, сорри)</p>
         </section>
     </main>
 

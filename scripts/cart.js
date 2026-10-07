@@ -4,6 +4,45 @@ const cartEmpty = document.querySelector("#cart-empty");
 const cartTotal = document.querySelector("#cart-total");
 const cartCount = document.querySelector("#cart-count");
 const cartMessage = document.querySelector("#cart-message");
+const storageMessage = document.querySelector("#storage-message");
+const checkoutButton = document.querySelector("#checkout-button");
+const checkoutSection = document.querySelector("#checkout");
+const cartStorageKey = "kalinin-goalie-cart";
+
+function loadCart() {
+    try {
+        const savedCart = JSON.parse(localStorage.getItem(cartStorageKey) || "[]");
+        if (!Array.isArray(savedCart)) {
+            return;
+        }
+
+        for (const item of savedCart) {
+            if (!item || !Number.isSafeInteger(item.quantity) || item.quantity < 1) {
+                continue;
+            }
+            const product = products.find(function (product) {
+                return product.id === item.productId;
+            });
+            const duplicate = cart.some(function (cartItem) {
+                return cartItem.productId === item.productId;
+            });
+            if (product && !duplicate) {
+                cart.push({ productId: item.productId, quantity: item.quantity });
+            }
+        }
+    } catch {
+        storageMessage.textContent = "Не удалось загрузить сохранённую корзину. Можно собрать её заново.";
+    }
+}
+
+function saveCart() {
+    try {
+        localStorage.setItem(cartStorageKey, JSON.stringify(cart));
+        storageMessage.textContent = "";
+    } catch {
+        storageMessage.textContent = "Браузер не позволяет сохранить корзину. После обновления изменения могут потеряться.";
+    }
+}
 
 function addToCart(productId) {
     const item = cart.find(function (item) {
@@ -16,7 +55,9 @@ function addToCart(productId) {
         cart.push({ productId: productId, quantity: 1 });
     }
 
+    saveCart();
     renderCart();
+    document.querySelector("#order-message").textContent = "";
     const product = products.find(function (product) {
         return product.id === productId;
     });
@@ -29,6 +70,7 @@ function removeFromCart(productId) {
     });
 
     cart.splice(index, 1);
+    saveCart();
     renderCart();
     cartMessage.textContent = "Товар удалён из корзины.";
     document.querySelector("#cart-title").focus();
@@ -49,6 +91,11 @@ function updateCartTotal() {
     cartTotal.textContent = total.toLocaleString("ru-RU") + " ₽";
     cartCount.textContent = count;
     cartEmpty.hidden = cart.length > 0;
+    checkoutButton.disabled = cart.length === 0;
+    if (cart.length === 0) {
+        checkoutSection.hidden = true;
+        checkoutButton.setAttribute("aria-expanded", "false");
+    }
 }
 
 function renderCart() {
@@ -101,6 +148,7 @@ function renderCart() {
             }
 
             item.quantity = quantity;
+            saveCart();
             rowTotal.textContent = (product.price * quantity).toLocaleString("ru-RU") + " ₽";
             updateCartTotal();
             cartMessage.textContent = "Количество изменено. Итого: " + cartTotal.textContent;
@@ -121,3 +169,6 @@ function renderCart() {
 
     updateCartTotal();
 }
+
+loadCart();
+renderCart();

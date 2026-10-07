@@ -63,8 +63,7 @@ h2 {
     font-size: 24px;
 }
 
-.intro p,
-.cart-note {
+.intro p {
     margin: 0 0 20px;
     color: #535f70;
 }
@@ -117,14 +116,23 @@ button {
     cursor: pointer;
 }
 
-.product-card button {
+.product-card button,
+.primary-button {
     color: white;
     background-color: #213b59;
     border-color: #213b59;
 }
 
-.product-card button:hover {
+.product-card button:hover,
+.primary-button:hover:not(:disabled) {
     background-color: #31577f;
+}
+
+button:disabled {
+    color: #596577;
+    background-color: #e8edf2;
+    border-color: #c5ced9;
+    cursor: not-allowed;
 }
 
 a:focus-visible,
@@ -146,6 +154,67 @@ input:focus-visible {
 
 .cart-message:empty {
     display: none;
+}
+
+.storage-message {
+    color: #8b2424;
+}
+
+.storage-message:empty,
+.order-message:empty {
+    display: none;
+}
+
+.checkout {
+    margin-top: 32px;
+    padding: 24px;
+    background-color: white;
+    border: 1px solid #d8dee6;
+    border-radius: 6px;
+}
+
+.form-fields {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.form-fields input {
+    display: block;
+    width: 100%;
+    min-height: 44px;
+    margin-top: 6px;
+    padding: 10px;
+    font: inherit;
+    border: 1px solid #a9b5c4;
+    border-radius: 4px;
+}
+
+.address-field {
+    grid-column: 1 / -1;
+}
+
+.field-help {
+    display: block;
+    margin-top: 6px;
+    color: #535f70;
+    font-size: 14px;
+}
+
+.form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.order-message {
+    padding: 16px;
+    background-color: #e5f3e8;
+    color: #235832;
+    border: 1px solid #a4c9ac;
+    border-radius: 6px;
+    font-size: 22px;
 }
 
 .cart-list {
@@ -263,6 +332,14 @@ input:focus-visible {
 }
 
 @media (max-width: 520px) {
+    .checkout {
+        padding: 16px;
+    }
+
+    .form-fields {
+        grid-template-columns: 1fr;
+    }
+
     .container {
         width: 94%;
     }
